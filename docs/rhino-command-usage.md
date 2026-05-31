@@ -37,8 +37,8 @@ cp rhino_scripts/steel_estimate_core_for_rhino.py  ~/Documents/RhinoScripts/
 
 | Alias名 | コマンドマクロ |
 |---|---|
-| `Mass` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"` |
-| `Quote` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"` |
+| `Mass` | `! _-RunPythonScript "~/Documents/RhinoScripts/mass_rhino.py"` |
+| `Quote` | `! _-RunPythonScript "~/Documents/RhinoScripts/quote_estimate_rhino.py"` |
 
 > パスは環境に応じて変更すること。スペースが含まれる場合はダブルクォートで囲む。
 
@@ -139,7 +139,7 @@ Aliases のパスを実際のパスに合わせる。
 
 ```
 ----- Quote script -----
-path: /Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py
+path: ~/Documents/RhinoScripts/quote_estimate_rhino.py
 version: quote-debug-2026-05-31
 ```
 

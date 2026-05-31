@@ -56,8 +56,8 @@ cp rhino_scripts/steel_estimate_core_for_rhino.py  ~/Documents/RhinoScripts/
 
 | Alias名 | コマンドマクロ |
 |---|---|
-| `Mass` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"` |
-| `Quote` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"` |
+| `Mass` | `! _-RunPythonScript "~/Documents/RhinoScripts/mass_rhino.py"` |
+| `Quote` | `! _-RunPythonScript "~/Documents/RhinoScripts/quote_estimate_rhino.py"` |
 
 パスは環境に合わせて変更すること。
 

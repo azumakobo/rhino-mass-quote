@@ -168,5 +168,5 @@ def test_version_banners_present():
 
 def test_command_registration_doc_has_macros():
     doc = open(os.path.join(_ROOT, "docs", "rhino-command-registration.md"), encoding="utf-8").read()
-    assert '_-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"' in doc
-    assert '_-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"' in doc
+    assert '_-RunPythonScript "~/Documents/RhinoScripts/quote_estimate_rhino.py"' in doc
+    assert '_-RunPythonScript "~/Documents/RhinoScripts/mass_rhino.py"' in doc
