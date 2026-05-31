@@ -1,4 +1,6 @@
-# steel-estimator
+# rhino-mass-quote
+
+> Rhino commands for material mass calculation and rough metal quote estimation, designed for artists, fabrication studios, and public art production workflows.
 
 Rhinoコマンドで使える、鋼材の重量計算・概算見積ツール。
 
@@ -54,8 +56,8 @@ cp rhino_scripts/steel_estimate_core_for_rhino.py  ~/Documents/RhinoScripts/
 
 | Alias名 | コマンドマクロ |
 |---|---|
-| `Mass` | `! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/mass_rhino.py"` |
-| `Quote` | `! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/quote_estimate_rhino.py"` |
+| `Mass` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"` |
+| `Quote` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"` |
 
 パスは環境に合わせて変更すること。
 

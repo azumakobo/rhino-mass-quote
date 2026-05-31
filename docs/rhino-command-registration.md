@@ -7,15 +7,15 @@ ScriptEditorで毎回スクリプトを開かず、Rhinoのコマンド欄に `Q
 
 | コマンド | 実行ファイル |
 |---|---|
-| Quote（概算見積） | `/Users/azumakobo/Documents/RhinoScripts/quote_estimate_rhino.py` |
-| Mass（重量計算） | `/Users/azumakobo/Documents/RhinoScripts/mass_rhino.py` |
+| Quote（概算見積） | `/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py` |
+| Mass（重量計算） | `/Users/<you>/Documents/RhinoScripts/mass_rhino.py` |
 
 依存ファイル（同じ `RhinoScripts/` に配置済み・コピー不要）:
 - `steel_estimate_core_for_rhino.py`（Quote用）
 - `mass_core_for_rhino.py`（Mass用）
 
 公開参考価格は Quote が自動参照します（プロジェクト側のまま）:
-`/Users/azumakobo/Documents/claude/projects/steel-estimator/public_reference_data/`
+`~/Documents/claude/projects/steel-estimator/public_reference_data/`（またはリポジトリをクローンした先の `public_reference_data/`）
 
 > プロジェクト側の原本 `…/steel-estimator/rhino_scripts/` を編集したら、`RhinoScripts/` に
 > コピーし直してください（下記「更新手順」）。実行ファイルの取り違え防止に、起動時ログ冒頭へ
@@ -25,12 +25,12 @@ ScriptEditorで毎回スクリプトを開かず、Rhinoのコマンド欄に `Q
 
 Quote:
 ```
-! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/quote_estimate_rhino.py"
+! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"
 ```
 
 Mass:
 ```
-! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/mass_rhino.py"
+! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"
 ```
 
 ## エイリアス登録手順（Rhino 8 Mac）
@@ -41,8 +41,8 @@ Mass:
 
    | Alias（別名） | Command macro（コマンドマクロ） |
    |---|---|
-   | `Quote` | `! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/quote_estimate_rhino.py"` |
-   | `Mass`  | `! _-RunPythonScript "/Users/azumakobo/Documents/RhinoScripts/mass_rhino.py"` |
+   | `Quote` | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/quote_estimate_rhino.py"` |
+   | `Mass`  | `! _-RunPythonScript "/Users/<you>/Documents/RhinoScripts/mass_rhino.py"` |
 
 4. ダイアログを閉じる。
 5. Rhinoのコマンド欄に **`Quote`** と打つ → 概算見積が起動。
@@ -64,8 +64,8 @@ Mass:
 ## 更新手順（原本を直したら反映）
 
 ```bash
-SRC=/Users/azumakobo/Documents/claude/projects/steel-estimator/rhino_scripts
-DST=/Users/azumakobo/Documents/RhinoScripts
+SRC=~/Documents/claude/projects/steel-estimator/rhino_scripts   # リポジトリをクローンした場所に合わせる
+DST=~/Documents/RhinoScripts
 cp "$SRC/quote_estimate_rhino.py"        "$DST/"
 cp "$SRC/mass_rhino.py"                  "$DST/"
 cp "$SRC/steel_estimate_core_for_rhino.py" "$DST/"
