@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>レイヤー一覧</title>
+<link rel="stylesheet" href="/static/mapping_ui.css">
+</head>
+<body>
+<header>
+  <h1>レイヤー一覧</h1>
+  <nav><a href="/">ダッシュボード</a> | <a href="/layers">レイヤー一覧</a></nav>
+</header>
+
+<table>
+  <thead>
+    <tr><th>レイヤー</th><th>calc_type</th><th>材質</th><th>単価</th><th>price_unit</th>
+        <th>一致</th><th>状態</th></tr>
+  </thead>
+  <tbody>
+  {% for x in rows %}
+    <tr class="{{ 'needs' if x.needs_price else '' }}">
+      <td><a href="/layers/{{ x.row.layer_name | urlencode }}">{{ x.row.layer_name }}</a></td>
+      <td>{{ x.row.calc_type }}</td>
+      <td>{{ x.row.material_category }} {{ x.row.material_grade }}</td>
+      <td>{{ x.row.unit_price }}</td>
+      <td>{{ x.row.price_unit }}</td>
+      <td>{{ x.match_level }}</td>
+      <td>{{ '⚠ 要設定' if x.needs_price else 'OK' }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<section class="actions">
+  <form method="post" action="/save"><button type="submit">承認保存</button></form>
+</section>
+</body>
+</html>

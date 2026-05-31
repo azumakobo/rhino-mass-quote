@@ -1,0 +1,7 @@
+﻿category,subtotal_amount,item_count,needs_review_count,warning_count,notes
+material,52813,5,0,0,
+processing,67000,4,0,0,
+transport,18000,1,0,0,
+installation,30000,1,0,0,
+ignored,0,1,0,0,見積対象外。
+TOTAL(除ignored),167813,12,0,0,ignoredを除く合計。消費税別・概算。

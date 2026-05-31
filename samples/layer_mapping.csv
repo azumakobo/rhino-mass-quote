@@ -1,0 +1,10 @@
+﻿layer_name,enabled,calc_type,material_category,material_grade,spec_text,thickness_mm,diameter_mm,width_mm,height_mm,stock_length_mm,density_g_cm3,unit_price,price_unit,waste_rate,quantity_override,fixed_amount,price_source,notes
+鉄板6mm,true,area_to_weight,plate,SS400,SS400 t6,6,,,,,7.85,150,kg,1.1,,,社内基準,鉄板。面積×板厚×密度×歩留でkg、kg単価150円
+角パイプ_50,true,curve_length_to_stock,square_pipe,STKR,□50x50x2.3,2.3,,50,50,6000,,3880,stock,1.1,,,過去見積,定尺6mで本数算出
+丸パイプ手すり,true,curve_length_to_meter,round_pipe,SUS304,SUS304 φ42.7,,42.7,,,,,1200,m,1.05,,,社内基準,m単価で計算
+ソリッド部品,true,volume_to_weight,unknown,SS400,鋳物的ブラケット,,,,,,7.85,300,kg,1.0,,,,Rhinoソリッド体積から重量
+ボルト類,true,object_count,,,M12ボルト,,,,,,,80,個,1.0,,,,個数×単価
+補助線,true,ignore,,,,,,,,,,,,1.0,,,,検討用・見積対象外
+曲げ加工,true,fixed_amount,,,,,,,,,,,,1.0,,15000,加工見積,加工費(生材単価と分離)
+塗装費,true,fixed_amount,,,,,,,,,,,,1.0,,20000,,塗装一式
+運搬費,true,fixed_amount,,,,,,,,,,,,1.0,,18000,,運搬一式

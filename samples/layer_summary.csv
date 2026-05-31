@@ -1,0 +1,10 @@
+﻿layer_name,object_count,total_area_m2,total_volume_mm3,total_curve_length_m,detected_object_types,bounding_box_note,suggested_calc_type,suggested_material_category,suggested_spec_text,suggested_thickness_mm,suggested_diameter_mm,suggested_width_mm,suggested_height_mm,needs_mapping,warning,notes
+鉄板6mm,2,2,0,0,Surface,max W1000 x H1000 x D6 mm,area_to_weight,plate,鉄板6mm,6,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+角パイプ_50,3,0,0,18,Curve,max W50 x H50 x D6000 mm,curve_length_to_stock,square_pipe,角パイプ_50,,,50,,true,,自動集計。suggested_* は候補であり確定値ではない。
+丸パイプ手すり,1,0,0,12,Curve,max W42.7 x H900 x D12000 mm,curve_length_to_stock,round_pipe,丸パイプ手すり,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+ソリッド部品,1,0,2e+06,0,Brep,max W200 x H100 x D100 mm,volume_to_weight,,ソリッド部品,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+ボルト類,24,0,0,0,Point,max W0 x H0 x D0 mm,object_count,,ボルト類,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+補助線,1,0,0,5,Curve,max W5000 x H0 x D0 mm,ignore,,補助線,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+曲げ加工,1,0,0,1,Curve,max W0 x H0 x D0 mm,fixed_amount,,曲げ加工,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+塗装費,1,0,0,0,Annotation,max W0 x H0 x D0 mm,fixed_amount,,塗装費,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。
+運搬費,1,0,0,0,Annotation,max W0 x H0 x D0 mm,fixed_amount,,運搬費,,,,,true,,自動集計。suggested_* は候補であり確定値ではない。

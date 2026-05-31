@@ -1,0 +1,8 @@
+﻿file_name,layer_name,object_id,object_name,object_type,object_count,object_area_mm2,object_volume_mm3,object_curve_length_mm,bounding_box_width_mm,bounding_box_height_mm,bounding_box_depth_mm,is_closed_curve,is_closed_brep,is_surface,is_mesh,is_curve,notes
+demo_model_boxes.3dm,PL_SS400_t6,11111111-0000-0000-0000-000000000001,板Box,Brep,1,,3000000,,1000,500,6,false,true,true,false,false,薄いBox(volume→重量)
+demo_model_boxes.3dm,SQPIPE_STKR_40x40_t2.3,22222222-0000-0000-0000-000000000002,角パイプBox,Brep,1,,9600000,,40,40,6000,false,true,true,false,false,ただのBoxでよい(volumeを正とする)
+demo_model_boxes.3dm,PIPE_STK_D48.6_t2.3,33333333-0000-0000-0000-000000000003,丸パイプCyl,Brep,1,,11130474.3,,48.6,48.6,6000,false,true,true,false,false,Cylinderでよい
+demo_model_boxes.3dm,FB_SS400_50x4.5,44444444-0000-0000-0000-000000000004,FB Box,Brep,1,,675000.0,,50,4.5,3000,false,true,true,false,false,Box
+demo_model_boxes.3dm,ANGLE_SS400_40x40_t3,55555555-0000-0000-0000-000000000005,アングルBox,Brep,1,,4800000,,40,40,3000,false,true,true,false,false,Boxでよい(L字にこだわらない)
+demo_model_boxes.3dm,BOLT_TEST,66666666-0000-0000-0000-000000000006,ボルト,Point,6,,,,,,,false,false,false,false,false,購入部品
+demo_model_boxes.3dm,IGNORE_GUIDE,77777777-0000-0000-0000-000000000007,補助線,Curve,1,,,2000,2000,,,false,false,false,false,true,ガイド

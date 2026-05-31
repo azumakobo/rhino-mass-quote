@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>候補単価選択UI - ダッシュボード</title>
+<link rel="stylesheet" href="/static/mapping_ui.css">
+</head>
+<body>
+<header>
+  <h1>鋼材見積 候補単価選択UI</h1>
+  <nav><a href="/">ダッシュボード</a> | <a href="/layers">レイヤー一覧</a></nav>
+  <p class="muted">out-dir: <code>{{ out_dir }}</code></p>
+</header>
+
+{% if saved %}
+<div class="banner ok">
+  保存しました → <code>{{ saved.approved_path }}</code>（変更 {{ saved.logged }} 件をログ追記）
+  {% if saved.backup_path %}<br>バックアップ: <code>{{ saved.backup_path }}</code>{% endif %}
+</div>
+{% endif %}
+
+<section class="cards">
+  <div class="card"><span class="num">{{ d.layers }}</span>レイヤー数</div>
+  <div class="card"><span class="num">{{ d.mapped }}</span>mapping済み</div>
+  <div class="card warn"><span class="num">{{ d.unmapped }}</span>未設定</div>
+  <div class="card warn"><span class="num">{{ d.needs_review }}</span>needs_review</div>
+  <div class="card"><span class="num">{{ d.warning }}</span>warning</div>
+  <div class="card"><span class="num">{{ d.suggestion_count }}</span>候補提案</div>
+</section>
+
+<section>
+  <h2>候補単価の一致レベル</h2>
+  <ul class="inline">
+    <li>exact: <b>{{ d.match_levels.exact }}</b></li>
+    <li>close: <b>{{ d.match_levels.close }}</b></li>
+    <li>category_only: <b>{{ d.match_levels.category_only }}</b></li>
+    <li>none: <b>{{ d.match_levels.none }}</b></li>
+  </ul>
+  {% if d.estimate_total != "" %}
+  <p>概算合計(ignored除く・税率{{ "%.0f"|format(d.tax_rate * 100) }}%):
+    税抜 <b>¥{{ d.estimate_total_ex_tax }}</b>
+    ＋ 消費税 ¥{{ d.estimate_tax_amount }}
+    ＝ <b>税込 ¥{{ d.estimate_total_inc_tax }}</b></p>
+  <p class="muted">※ mapping/承認保存の unit_price は税抜です（二重課税防止）。</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>次に編集すべきレイヤー（単価未設定など）</h2>
+  {% if d.next_layers %}
+  <ul>
+    {% for n in d.next_layers %}
+    <li><a href="/layers/{{ n | urlencode }}">{{ n }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}<p class="muted">未設定レイヤーはありません。</p>{% endif %}
+</section>
+
+<section class="actions">
+  <form method="post" action="/save"><button type="submit">承認保存（layer_mapping_approved.csv）</button></form>
+  <form method="post" action="/rerun-estimate"><button type="submit" class="secondary">保存後に見積を再実行</button></form>
+  <a class="btn" href="/download/layer_mapping_approved.csv">approved CSVをダウンロード</a>
+</section>
+
+<section>
+  <h2>保存後に実行するコマンド</h2>
+  <pre>{{ rerun_cmd }}</pre>
+  <p class="muted">※ 単価の最終決定は人間です。保存先は approved で、元のmappingは上書きしません。</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿source_type,layer_name,item_name,calc_type,material_category,material_grade,spec_text,basis_quantity,basis_unit,object_count,raw_area_m2,raw_length_m,raw_volume_mm3,thickness_mm,density_g_cm3,estimated_weight_kg,waste_rate,adjusted_quantity,unit_price,price_unit,estimated_amount,price_source,accuracy_level,needs_review,warning,notes
+rhino_layer,鉄板6mm,SS400 t6,area_to_weight,plate,SS400,SS400 t6,2,m2,2,2,0,0,6,7.85,103.62,1.1,103.62,150,kg,15543,社内基準,manual_mapping,false,,鉄板。面積×板厚×密度×歩留でkg、kg単価150円
+rhino_layer,角パイプ_50,□50x50x2.3,curve_length_to_stock,square_pipe,STKR,□50x50x2.3,18,m,3,0,18,0,,,,1.1,4,3880,stock,15520,過去見積,manual_mapping,false,,定尺6mで本数算出; 定尺6000mm
+rhino_layer,丸パイプ手すり,SUS304 φ42.7,curve_length_to_meter,round_pipe,SUS304,SUS304 φ42.7,12,m,1,0,12,0,,,,1.05,12.6,1200,m,15120,社内基準,manual_mapping,false,,m単価で計算
+rhino_layer,ソリッド部品,鋳物的ブラケット,volume_to_weight,unknown,SS400,鋳物的ブラケット,2e+06,mm3,1,0,0,2e+06,,7.85,15.7,1,15.7,300,kg,4710,layer_mapping,manual_mapping,false,,Rhinoソリッド体積から重量
+rhino_layer,ボルト類,M12ボルト,object_count,,,M12ボルト,24,個,24,0,0,0,,,,1,24,80,個,1920,layer_mapping,manual_mapping,false,,個数×単価
+ignored,補助線,補助線,ignore,,,,,,1,0,5,0,,,,,,,,,,ignored,false,,検討用・見積対象外; 対象外(calc_type=ignore)
+rhino_layer,曲げ加工,曲げ加工,fixed_amount,,,,,,1,0,1,0,,,,1,1,,,15000,fixed,fixed,false,,加工費(生材単価と分離)
+rhino_layer,塗装費,塗装費,fixed_amount,,,,,,1,0,0,0,,,,1,1,,,20000,fixed,fixed,false,,塗装一式
+rhino_layer,運搬費,運搬費,fixed_amount,,,,,,1,0,0,0,,,,1,1,,,18000,fixed,fixed,false,,運搬一式
+cost_item,,レーザー切断,fixed_amount,cutting,,cutting,,,,,,,,,,,1,,,12000,cost_items,fixed,false,,切断一式
+cost_item,,溶接組立,quantity,welding,,welding,8,,,,,,,,,,8,2500,箇所,20000,cost_items,manual_price,false,,8箇所
+cost_item,,現場取付,fixed_amount,installation,,installation,,,,,,,,,,,1,,,30000,cost_items,fixed,false,,据付一式

@@ -1,0 +1,9 @@
+﻿layer_name,category,calc_type,object_count,volume_mm3,area_m2,material_grade,density_g_cm3,weight_kg,unit_price_ex_tax,unit_price_inc_tax,price_unit,amount_ex_tax,amount_inc_tax,pricing_mode,warning
+PL_SS400_t6,plate,volume_to_weight,0,3000000.0,,SS400,7.85,23.55,270.0,297,kg,6358.5,6994,median,
+PL_SS400_t9,plate,volume_to_weight,0,4500000.0,,SS400,7.85,35.325,260.0,286,kg,9184.5,10103,median,
+SQPIPE_STKR_40x40_t2.3,square_pipe,volume_to_weight,0,9600000.0,,STKR,7.85,75.36,260.0,286,kg,19593.6,21553,median,
+PIPE_STK_D48.6_t2.3,round_pipe,volume_to_weight,0,14171760.0,,STK,7.85,111.248,290.0,319,kg,32262.0,35488,median,
+FB_SS400_50x4.5,flat_bar,volume_to_weight,0,675000.0,,SS400,7.85,5.299,210.0,231,kg,1112.7,1224,median,
+ANGLE_SS400_40x40_t3,angle,volume_to_weight,0,4800000.0,,SS400,7.85,37.68,,,kg,,,median,公開参考にkg単価なし(JIS重量表が必要なカテゴリ); kg単価未確定: mapping UI等で手入力
+BOLT_TEST,object_count,object_count,6,,,,7.85,,,,個,,,median,購入部品: 個数×単価は手入力(UI後続/CLI)
+IGNORE_GUIDE,ignore,ignore,0,,,,7.85,,,,,,,median,対象外(ignore)

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>レイヤー編集: {{ layer_name }}</title>
+<link rel="stylesheet" href="/static/mapping_ui.css">
+</head>
+<body>
+<header>
+  <h1>レイヤー編集: {{ layer_name }}</h1>
+  <nav><a href="/">ダッシュボード</a> | <a href="/layers">レイヤー一覧</a></nav>
+</header>
+
+<section class="geom">
+  <h2>Rhino数量根拠</h2>
+  <ul class="inline">
+    <li>object_count: {{ d.summary.object_count or "0" }}</li>
+    <li>area_m2: {{ d.summary.total_area_m2 or "0" }}</li>
+    <li>curve_m: {{ d.summary.total_curve_length_m or "0" }}</li>
+    <li>volume_mm3: {{ d.summary.total_volume_mm3 or "0" }}</li>
+    <li>types: {{ d.summary.detected_object_types or "-" }}</li>
+  </ul>
+  {% if d.summary.warning %}<p class="warn">⚠ {{ d.summary.warning }}</p>{% endif %}
+</section>
+
+{% if d.pricing %}
+<section class="pricing">
+  <h2>価格レンジ（中央値=通常 / 最大値=安全側 / 手入力）</h2>
+  <ul>
+    <li>pricing_mode: <b>{{ d.pricing.pricing_mode or "(既定:median)" }}</b>（選択肢: {{ d.pricing.modes | join(" / ") }}）</li>
+    {% if d.pricing.recommended.ex is not none %}
+    <li>recommended(中央値): 税抜 ¥{{ d.pricing.recommended.ex }} / 税込 ¥{{ d.pricing.recommended.inc }}</li>
+    {% endif %}
+    {% if d.pricing.conservative.ex is not none %}
+    <li>conservative(最大値): 税抜 ¥{{ d.pricing.conservative.ex }} / 税込 ¥{{ d.pricing.conservative.inc }}</li>
+    {% endif %}
+    {% if d.pricing.selected.ex is not none %}
+    <li><b>選択中(selected)</b>: 税抜 ¥{{ d.pricing.selected.ex }} / 税込 ¥{{ d.pricing.selected.inc }}（基準: {{ d.pricing.selected_price_basis }}）</li>
+    {% endif %}
+    {% if d.pricing.price_range_source %}<li class="muted">source: {{ d.pricing.price_range_source }}</li>{% endif %}
+  </ul>
+  <p class="muted">※ 単価は税抜で保存します（税込は表示のみ）。pricing_mode と manual_unit_price は下のフォームで変更できます。</p>
+</section>
+{% endif %}
+
+<div class="two-col">
+<section class="editor">
+  <h2>編集（保存するまでファイルに書きません）</h2>
+  <form method="post" action="/layers/{{ layer_name | urlencode }}">
+    {% for f in fields %}
+      {% if f != "layer_name" %}
+      <label>{{ f }}
+        <input type="text" name="{{ f }}" value="{{ d.row[f] }}">
+      </label>
+      {% endif %}
+    {% endfor %}
+    <button type="submit">この内容で更新（メモリ保持）</button>
+  </form>
+</section>
+
+<section class="candidates">
+  <h2>候補単価</h2>
+
+  {% if d.suggestion %}
+  <div class="cand {{ 'danger' if d.suggestion._warnings else 'good' }}">
+    <h3>提案（match_level: {{ d.suggestion.match_level }}）</h3>
+    <p>¥{{ d.suggestion.suggested_unit_price or "-" }} / {{ d.suggestion.suggested_price_unit }}
+       — {{ d.suggestion.suggested_vendor }} {{ d.suggestion.suggested_quote_date }}</p>
+    <p class="muted">{{ d.suggestion.suggested_spec_key }} (confidence {{ d.suggestion.confidence }})</p>
+    {% for w in d.suggestion._warnings %}<p class="warn">⚠ {{ w }}</p>{% endfor %}
+    {% if d.suggestion.match_level != "none" %}
+    <form method="post" action="/layers/{{ layer_name | urlencode }}/apply-suggestion">
+      <input type="hidden" name="spec_key" value="{{ d.suggestion.suggested_spec_key }}">
+      <button type="submit">この候補を反映</button>
+    </form>
+    {% endif %}
+  </div>
+  {% else %}<p class="muted">この材質カテゴリの提案はありません。</p>{% endif %}
+
+  <h3>同カテゴリの候補（生材）</h3>
+  <p>
+    <a href="/layers/{{ layer_name | urlencode }}?show_processed={{ 0 if show_processed else 1 }}">
+      {{ "加工品候補を隠す" if show_processed else "加工品候補も表示する" }}
+    </a>
+  </p>
+  {% if d.extra_candidates %}
+    {% for c in d.extra_candidates %}
+    <div class="cand {{ 'danger' if c._warnings else 'good' }}">
+      <p>¥{{ c.latest_unit_price or "-" }} / {{ c.price_unit }}
+         — {{ c.vendor_name }} {{ c.latest_quote_date }} (n={{ c.sample_count }})</p>
+      <p class="muted">{{ c.normalized_spec }} [{{ c.candidate_class }}]</p>
+      {% for w in c._warnings %}<p class="warn">⚠ {{ w }}</p>{% endfor %}
+      <form method="post" action="/layers/{{ layer_name | urlencode }}/apply-suggestion">
+        <input type="hidden" name="spec_key" value="{{ c.spec_key }}">
+        <button type="submit" {{ 'class=danger-btn' if c._warnings else '' }}>この候補を反映</button>
+      </form>
+    </div>
+    {% endfor %}
+  {% else %}<p class="muted">候補なし。</p>{% endif %}
+
+  <p class="muted">※ 加工品候補（processed_item / usable=false）は生材単価に使わないでください。
+     反映してもファイルには即保存されず、notesに警告が残ります。</p>
+</section>
+</div>
+
+<section class="actions">
+  <form method="post" action="/save"><button type="submit">承認保存（approved）</button></form>
+</section>
+</body>
+</html>

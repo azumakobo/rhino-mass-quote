@@ -1,0 +1,34 @@
+# --- 機微情報・認証 ---
+credentials.json
+token.json
+gcp-sa.json
+
+# --- アーカイブ ---
+*.zip
+
+# --- PDF原本・Rhino原本（取引先/案件情報を含む） ---
+*.pdf
+*.PDF
+*.3dm
+quotes/
+akiyama_quotes/
+
+# --- 抽出DB・見積データ（dataディレクトリは実データを含むため丸ごと除外） ---
+# レポート(.md)も取引先名/PDF名/見積日を含みうるため data/ 配下は全て除外。
+data/
+demo_output/
+public_demo_output/
+*.sqlite
+*.db
+release_audit_report.md
+# samples/ 配下のサンプルCSVはコミット対象（例示用のため除外しない）
+# public_reference_data/ は匿名化・集約・丸め済みのみ。コミット対象（除外しない）。
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store

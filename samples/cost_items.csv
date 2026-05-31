@@ -1,0 +1,4 @@
+﻿item_name,cost_category,calc_type,quantity,unit,unit_price,fixed_amount,notes
+レーザー切断,cutting,fixed_amount,,,,12000,切断一式
+溶接組立,welding,quantity,8,箇所,2500,,8箇所
+現場取付,installation,fixed_amount,,,,30000,据付一式

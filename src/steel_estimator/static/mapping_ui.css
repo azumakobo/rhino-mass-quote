@@ -1,0 +1,39 @@
+:root { --fg:#1c2331; --muted:#6b7280; --line:#e2e6ee; --ok:#0a7d33; --warn:#b35900; --danger:#b3261e; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", sans-serif; color: var(--fg);
+       max-width: 1100px; margin: 0 auto; padding: 16px; line-height: 1.5; }
+header { border-bottom: 2px solid var(--line); margin-bottom: 16px; }
+h1 { font-size: 1.4rem; margin: 8px 0; }
+h2 { font-size: 1.1rem; border-left: 4px solid #3b6cff; padding-left: 8px; margin-top: 24px; }
+h3 { font-size: 1rem; margin: 8px 0; }
+nav a { color: #3b6cff; text-decoration: none; }
+.muted { color: var(--muted); font-size: 0.9rem; }
+code, pre { background: #f4f6fb; padding: 2px 5px; border-radius: 4px; }
+pre { padding: 10px; overflow-x: auto; white-space: pre-wrap; }
+
+.cards { display: flex; flex-wrap: wrap; gap: 10px; }
+.card { flex: 1 1 120px; background: #f4f6fb; border-radius: 8px; padding: 12px; text-align: center; }
+.card.warn { background: #fff3e6; }
+.card .num { display: block; font-size: 1.6rem; font-weight: 700; }
+
+.inline { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+tr.needs { background: #fff3e6; }
+
+.two-col { display: flex; gap: 20px; flex-wrap: wrap; }
+.editor, .candidates { flex: 1 1 380px; }
+label { display: block; margin: 6px 0; font-size: 0.88rem; }
+input[type=text] { width: 100%; padding: 5px; border: 1px solid var(--line); border-radius: 4px; }
+
+.cand { border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 8px 0; }
+.cand.good { border-left: 4px solid var(--ok); }
+.cand.danger { border-left: 4px solid var(--danger); background: #fdeceb; }
+.warn { color: var(--warn); font-size: 0.88rem; margin: 4px 0; }
+
+button, .btn { background: #3b6cff; color: #fff; border: 0; border-radius: 6px;
+        padding: 8px 14px; font-size: 0.95rem; cursor: pointer; text-decoration: none; display: inline-block; }
+button.secondary { background: #5a6472; }
+button.danger-btn { background: var(--danger); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 20px 0; }
+.banner.ok { background: #e6f6ec; border: 1px solid var(--ok); padding: 10px; border-radius: 6px; }
